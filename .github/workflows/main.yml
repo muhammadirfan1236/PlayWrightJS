@@ -1,0 +1,30 @@
+name: Playwright Homes Test
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on PRs to the main branch
+
+jobs:
+  run-playwright-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.18.0'  # Use your Node.js version
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install  # Install Playwright browsers
+
+      - name: Run Homes Test
+        run: |
+          npx playwright test  --reporter=line  # Run the test (headless by default)
