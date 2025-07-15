@@ -86,7 +86,7 @@ test.describe('Validate login functionality', () => {
             await cartPage.clickOnCheckoutButton();
         });
 
-        await test.step('And fill Checkout information', async () => {
+        await test.step('And fills Checkout information', async () => {
             await informationPage.fillcheckoutInformation(informationPagetestData.firstName, informationPagetestData.lastName, informationPagetestData.postalCode);
         });
     
